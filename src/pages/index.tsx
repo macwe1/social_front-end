@@ -1,5 +1,5 @@
-import { HeaderContainers } from '@containers/header/Header'
-import { FooterContainers } from '@containers/footer/Footer'
+import { SideBarContainers } from '@containers/sideBar/sideBar'
+// import { ProfileContainers } from '@containers/profile/profile'
 
 /**
  * Homepage
@@ -7,8 +7,8 @@ import { FooterContainers } from '@containers/footer/Footer'
 const HomePage: React.FC = () => {
   return (
     <>
-      <HeaderContainers />
-      <FooterContainers />
+      <SideBarContainers />
+      {/* <ProfileContainers /> */}
     </>
   )
 }
