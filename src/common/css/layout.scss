@@ -3,18 +3,22 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
+body>div {
+    display: flex;
+}
+
 body {
     margin: 0;
     left: 0;
+    display: flex;
     max-width: 100vw;
-    overflow-x: hidden !important;
     -webkit-font-smoothing: antialiased;
     * {
         box-sizing: border-box;
         font-family: variables.$font-unit;
     }
     a {
-        color: #fff;
+        color: #9c9cab;
         text-decoration: none;
     }
     p {
@@ -55,8 +59,4 @@ body {
  ::-webkit-scrollbar-thumb:hover {
     background: rgb(255, 255, 255, 70%);
     transition: background 0.2s ease-in;
-}
-
-img {
-    padding-bottom: -14px !important;
 }
