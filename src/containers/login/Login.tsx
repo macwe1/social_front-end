@@ -4,15 +4,17 @@ import { update, reset } from '@store/counter/counterActions'
 import { AppState } from '@store/store'
 import { Dispatch } from 'redux'
 
-const mapStateToProps = ({ user }: AppState) => ({
-  user: user.user,
-})
+// const mapStateToProps = ({ user }: AppState) => ({
+//   user: user.user,
+// })
+//
+// const mapDispatchToProps = (dispatch: Dispatch) => ({
+//   update: () => dispatch(update),
+//   reset: () => dispatch(reset),
+// })
+// export const LoginContainers = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Login)
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  update: () => dispatch(update),
-  reset: () => dispatch(reset),
-})
-export const LoginContainers = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login)
+export const LoginContainers = Login

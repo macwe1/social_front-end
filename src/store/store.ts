@@ -26,15 +26,12 @@ const combinedReducers = combineReducers({ counter: counterReducer })
 
 const reducer: Reducer<AppState, AnyAction> = (state, action) => {
   if (action.type === HYDRATE) {
-    /* client state will be overwritten
-     * by server or static state hydation.
-     * Implement state preservation as needed.
-     * see: https://github.com/kirill-konshin/next-redux-wrapper#server-and-client-state-separation
-     */
-    return {
-      ...state,
-      ...action.payload,
+    const nextState = {
+      ...state, // use previous state
+      ...action.payload, // apply delta from hydration
     }
+    // if (state.counter.count) nextState.counter.count = state.counter.count // preserve count value on client side navigation
+    return nextState
   }
   return combinedReducers(state, action)
 }

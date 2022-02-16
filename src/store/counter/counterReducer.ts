@@ -2,10 +2,12 @@ import { CounterAction, CounterActionTypes } from './counterActions'
 
 export interface CounterState {
   readonly count: number
+  user: any
 }
 
 const initialCounterState = {
   count: 0,
+  user: {},
 }
 
 /**
@@ -13,7 +15,7 @@ const initialCounterState = {
  */
 export const counterReducer = (
   state: CounterState = initialCounterState,
-  action: CounterAction
+  action: any
 ): CounterState => {
   const { count } = state
   switch (action.type) {
@@ -29,6 +31,11 @@ export const counterReducer = (
       }
     case CounterActionTypes.RESET:
       return initialCounterState
+    case CounterActionTypes.UPDATE:
+      return {
+        ...state,
+        user: action.payload,
+      }
     default:
       return state
   }

@@ -1,10 +1,11 @@
 import styles from './login.module.scss'
-import { Icon } from '@components/icon/Icon'
+// import { Icon } from '@components/icon/Icon'
 import Link from 'next/link'
-import axios from 'axios'
+// import axios from 'axios'
 import { useEffect, useRef } from 'react'
 // import { GlobalContext } from '@components/context/GlobalContext'
 import { useRouter } from 'next/router'
+import {useDispatch, useSelector} from "react-redux";
 
 // interface CounterProps {
 //   user: any
@@ -14,6 +15,9 @@ import { useRouter } from 'next/router'
 export const Login: React.FunctionComponent = () => {
   const passwordEl = useRef(null)
   const logindEl = useRef(null)
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state)
+  console.log('state', state);
   const router = useRouter()
   useEffect(() => {
     window.localStorage.getItem('token') && router.push('/')
@@ -31,22 +35,24 @@ export const Login: React.FunctionComponent = () => {
       'Content-Type': 'application/json',
       Authorization: 'Bearer fefege...',
     }
-    axios
-      .post(`http://127.0.0.1:3231/auth/sign-in`, values, {
-        headers: headers,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          window.localStorage.setItem('token', res.data.token)
-          router.push(
-            `/users/${
-              res.data.user.shortLink == null
-                ? res.data.user.id
-                : res.data.user.shortLink
-            }`
-          )
-        }
-      })
+
+    dispatch({ type: 'UPDATE', payload: values })
+    // axios
+    //   .post(`http://127.0.0.1:3231/auth/sign-in`, values, {
+    //     headers: headers,
+    //   })
+    //   .then((res) => {
+    //     if (res.status === 200) {
+    //       window.localStorage.setItem('token', res.data.token)
+    //       router.push(
+    //         `/users/${
+    //           res.data.user.shortLink == null
+    //             ? res.data.user.id
+    //             : res.data.user.shortLink
+    //         }`
+    //       )
+    //     }
+    //   })
   }
 
   return (
@@ -57,7 +63,7 @@ export const Login: React.FunctionComponent = () => {
           <div className={styles.login_block_login}>Login</div>
           <div className={styles.login_block_inputGroup}>
             <span>
-              <Icon name="user" />
+              {/*<Icon name="user" />*/}
             </span>
             <input ref={logindEl} placeholder="login" />
           </div>
@@ -66,7 +72,7 @@ export const Login: React.FunctionComponent = () => {
           <div className={styles.login_block_login}>Login</div>
           <div className={styles.login_block_inputGroup}>
             <span>
-              <Icon name="password" />
+              {/*<Icon name="password" />*/}
             </span>
             <input ref={passwordEl} placeholder="password" />
           </div>

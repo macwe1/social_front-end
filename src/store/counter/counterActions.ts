@@ -4,12 +4,14 @@ export enum CounterActionTypes {
   INCREMENT = 'INCREMENT',
   DECREMENT = 'DECREMENT',
   RESET = 'RESET',
+  UPDATE = 'UPDATE',
 }
 
 export type CounterAction =
   | Action<CounterActionTypes.INCREMENT>
   | Action<CounterActionTypes.DECREMENT>
   | Action<CounterActionTypes.RESET>
+  | Action<CounterActionTypes.UPDATE>
 
 export const increment: CounterAction = {
   type: CounterActionTypes.INCREMENT,
